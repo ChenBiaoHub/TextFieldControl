@@ -20,6 +20,9 @@
     
     //注意 这里状态别写错了 使用的是 UIControlEventEditingChanged
     [self.testTextField addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(resignTextField)];
+    [self.view addGestureRecognizer:tap];
 }
 
 
@@ -33,5 +36,9 @@
     
     //去除特殊字符（保留自己定义的）
     [NSString containSpecialWorld:@"-=,." TextField:textField TextLength:10];
+}
+
+- (void)resignTextField {
+    [self.testTextField resignFirstResponder];
 }
 @end
